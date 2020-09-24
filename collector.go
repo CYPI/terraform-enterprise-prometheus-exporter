@@ -26,7 +26,7 @@ type tfeCollector struct {
 }
 
 // newTFECollector initializes every descriptor and returns a pointer to the collector
-func newTfeCollector() *tfeCollector {
+func NewTfeCollector() *tfeCollector {
 	return &tfeCollector{
 		runsTotalMetric: prometheus.NewDesc("runs_total",
 			"Total number of runs with any status (total)",

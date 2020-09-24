@@ -1,7 +1,7 @@
 FROM golang:1.14-alpine AS build
 
 WORKDIR /src/
-COPY main.go go.* /src/
+COPY main.go collector.go go.* /src/
 
 ENV GO111MODULE="on"
 ENV CGO_ENABLED="0"
