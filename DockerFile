@@ -8,6 +8,6 @@ ENV CGO_ENABLED="0"
 
 RUN go mod vendor && go build -mod vendor -o /bin/tfe-prometheus-exporter
 
-FROM scratch
+FROM alpine
 COPY --from=build /bin/tfe-prometheus-exporter /bin/tfe-prometheus-exporter
 ENTRYPOINT ["/bin/tfe-prometheus-exporter"]

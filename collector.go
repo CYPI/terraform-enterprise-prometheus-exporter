@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"os"
 
 	tfe "github.com/DeviaVir/go-tfe"
 	"github.com/prometheus/client_golang/prometheus"
@@ -130,19 +129,10 @@ func tfeRuns(tfeToken, tfeAddress string) (*tfe.AdminRunsList, error) {
 //Collect implements required collect function for all promehteus collectors
 func (collector *tfeCollector) Collect(ch chan<- prometheus.Metric) {
 
-	// checking for required enVars
-	tfetoken, ok := os.LookupEnv("TFE_TOKEN")
-	if !ok {
-		log.Fatal("TFE_TOKEN environment variable is required")
-	}
-
-	tfeaddress, ok := os.LookupEnv("TFE_ADDRESS")
-	if !ok {
-		log.Fatal("TFE_ADDRESS environment variable is required")
-	}
+	log.Println("[INFO]: scraping metrics")
 
 	// runs retrieves a List all the runs of TFE.
-	runs, err := tfeRuns(tfetoken, tfeaddress)
+	runs, err := tfeRuns(TfeToken, TfeAddress)
 	if err != nil {
 		log.Fatal(err)
 	}
