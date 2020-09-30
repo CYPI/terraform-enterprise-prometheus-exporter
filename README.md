@@ -51,3 +51,5 @@ runs_policy_override 0
 # TYPE runs_total gauge
 runs_total 78922
 ```
+
+![diagram](tfe_prometheus_metrics.png)
